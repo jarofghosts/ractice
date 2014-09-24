@@ -32,6 +32,8 @@ Test.prototype.initialize = function() {
     , 'data'
     , ['text']
   )
+
+  this.emit('ready')
 }
 
 Test.prototype._read = function() {
