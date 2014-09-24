@@ -41,6 +41,7 @@ Test.prototype._read = function() {
 
 Test.prototype._write = function(data, enc, next) {
   this.component.set(data)
+  this.state = new Estate(data)
 
   next()
 }
