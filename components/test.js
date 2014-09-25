@@ -7,22 +7,22 @@ var testTemplate = require('./templates/main.ract')
 
 module.exports = createTest
 
-function Test(el, initial) {
-  Component.call(this, el, testTemplate, initial)
+function Test(el) {
+  Component.call(this, el, testTemplate)
 
-  this.initialize()
+  initialize(this)
 }
 
 Test.prototype = Object.create(Component.prototype)
 
-Test.prototype.initialize = function() {
-  this.state.listen(
-      events(this.el.querySelector('[rel=text]'), 'input').pipe(values())
+function initialize(self) {
+  self.state.listen(
+      events(self.el.querySelector('[rel=text]'), 'input').pipe(values())
     , 'data'
     , ['text']
   )
 
-  this.emit('ready')
+  self.emit('ready')
 }
 
 function createTest(el) {

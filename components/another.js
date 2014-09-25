@@ -9,26 +9,26 @@ var anotherTemplate = require('./templates/another.ract')
 module.exports = createAnother
 
 function Another(el, initial) {
-  Component.call(this, el, anotherTemplate, initial)
+  Component.call(this, el, anotherTemplate, {data: initial})
 
-  this.initialize()
+  initialize(this)
 }
 
 Another.prototype = Object.create(Component.prototype)
 
-Another.prototype.initialize = function() {
+function initialize(self) {
   var ee = new EE
     , b = 0
 
-  this.state.listen(ee, 'data', ['color'])
+  self.state.listen(ee, 'data', ['color'])
 
-  events(this.el, 'click').on('data', function() {
+  events(self.el, 'click').on('data', function() {
     b = b ? 0 : 1
 
     ee.emit('data', b ? 'red' : 'blue')
   })
 
-  this.emit('ready')
+  self.emit('ready')
 }
 
 function createAnother(el, initial) {
