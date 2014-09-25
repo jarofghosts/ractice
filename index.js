@@ -1,5 +1,6 @@
 var testComponent = require('./components/test')
+  , nother = require('./components/another')
 
-var testStream = testComponent(document.getElementById('main'))
+var another = nother(document.getElementById('main'), {color: 'blue'})
 
-testStream.on('data', console.log.bind(console))
+testComponent(another.el.querySelector('[rel=component-el]'))
