@@ -6,4 +6,15 @@ var another = nother(document.getElementById('main'), {color: 'blue'})
 
 testComponent(another.el.querySelector('[rel=component-el]'))
 testComponent(document.getElementById('main2'))
-list(document.getElementById('list'))
+var listStream = list(document.getElementById('list'))
+
+setInterval(function() {
+  var random = Math.floor(Math.random() * 10)
+    , widgets = []
+
+  for(var i = 0; i < random; ++i) {
+    widgets.push({name: Date.now() * Math.random()})
+  }
+
+  listStream.write({widgets: widgets})
+}, 5000)
