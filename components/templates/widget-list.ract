@@ -1,0 +1,8 @@
+{{#widgets:i}}
+<div style="border: 1px solid #000; padding: 10px;">
+  {{name}}<br>
+  <a href="#" on-click="remove:{{i}}">remove</a>
+</div>
+{{/widgets}}
+<br>
+<a href="#" on-click="add">add another</a>
